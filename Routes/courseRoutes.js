@@ -35,7 +35,7 @@ router.get(
 );
 
 //set course status by admin
-router.post(
+router.patch(
   "/adminCourseDecision/:id",
   authController.protect,
   authController.restrictTo("admin"),
