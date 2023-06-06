@@ -186,10 +186,24 @@ exports.updateCourse = catchAsync(async (req, res, next) => {
   const course = await Course.findById(req.params.id);
 
   if (course.status == "pending" || course.status == "rejected") {
-    const doc = await Course.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
-    });
+    const doc = await Course.findByIdAndUpdate(
+      req.params.id,
+      {
+        courseName: req.body.courseName,
+        shortDescription: req.body.shortDescription,
+        selectLogo: req.body.selectLogo,
+        selectImage: req.body.selectImage,
+        solvedExample: req.body.solvedExample,
+        courseDuration: req.body.courseDuration,
+        difficultylevel: req.body.difficultylevel,
+        teacher: req.body.teacher,
+        sections: JSON.parse(req.body.sections),
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
 
     //error handling code
     if (!doc) {
