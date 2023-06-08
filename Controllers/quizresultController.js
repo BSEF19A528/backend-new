@@ -12,3 +12,4 @@ exports.createquizresult = catchAsync(async (req, res, next) => {
     // data: user,
   });
 });
+6
