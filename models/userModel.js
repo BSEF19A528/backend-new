@@ -158,6 +158,14 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 
+//populating courses
+userSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: "courses",
+  });
+  next();
+});
+
 //model
 const User = mongoose.model("User", userSchema);
 

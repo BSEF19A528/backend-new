@@ -44,6 +44,12 @@ const courseSchema = new mongoose.Schema({
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
   },
+  students: [
+    {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: "User",
+    },
+  ],
   createdAt: {
     type: Date,
     default: Date.now(),
@@ -55,7 +61,7 @@ const courseSchema = new mongoose.Schema({
   },
 });
 
-//populating courses
+//populating teacher
 courseSchema.pre(/^find/, function (next) {
   this.populate({
     path: "teacher",

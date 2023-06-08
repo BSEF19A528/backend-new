@@ -33,13 +33,13 @@ router.patch(
 );
 
 //get all users
-router.get("/", userController.getAllUsers);
+router.get("/", authController.protect, userController.getAllUsers);
 
 //get one users
-router.get("/:id", userController.getOneUser);
+router.get("/:id", authController.protect, userController.getOneUser);
 
 //Delete User
-router.delete("/deleteMe", userController.deleteUser);
+router.delete("/deleteMe", authController.protect, userController.deleteUser);
 
 //exporting
 module.exports = router;

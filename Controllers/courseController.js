@@ -1,7 +1,6 @@
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const Course = require("../models/courseModel");
-const User = require("../models/userModel");
 const multer = require("multer");
 const sharp = require("sharp");
 
