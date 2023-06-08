@@ -8,7 +8,7 @@ const authController = require("../Controllers/authController");
 const router = express.Router();
 
 //to enroll course
-router.post(
+router.patch(
   "/enrollStudentinCourse",
   authController.protect,
   authController.restrictTo("student"),
