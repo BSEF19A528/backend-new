@@ -15,12 +15,20 @@ router.post(
   enrollController.enrollStudentinCourse
 );
 
-//to view enrolled courses
+//to view all enrolled courses
 router.get(
   "/viewEnrolledCourses",
   authController.protect,
   authController.restrictTo("student"),
   enrollController.viewEnrolledCourses
+);
+
+//to view one enrolled courses
+router.get(
+  "/viewOneEnrolledCourse/:id",
+  authController.protect,
+  authController.restrictTo("student"),
+  enrollController.viewOneEnrolledCourse
 );
 
 //exporting

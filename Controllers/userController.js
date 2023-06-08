@@ -102,37 +102,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   });
 });
 
-//Get All Users
-exports.getAllUsers = async (req, res, next) => {
-  //creating user
-  const newUser = await User.find();
-
-  res.status(200).json({
-    //JSEND FORMAT
-    status: "success",
-    //sending token back to client
-    data: {
-      user: newUser,
-    },
-  });
-};
-
-//Get one User
-exports.getOneUser = async (req, res, next) => {
-  //creating user
-  const newUser = await User.findById(req.params.id);
-
-  res.status(200).json({
-    //JSEND FORMAT
-    status: "success",
-    //sending token back to client
-    data: {
-      user: newUser,
-    },
-  });
-};
-
-//For Teacher to delete course
+//For user to delete itself
 exports.deleteUser = catchAsync(async (req, res, next) => {
   await User.findByIdAndUpdate(req.user.id, { active: false });
 

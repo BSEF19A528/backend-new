@@ -32,12 +32,6 @@ router.patch(
   userController.updateMe
 );
 
-//get all users
-router.get("/", authController.protect, userController.getAllUsers);
-
-//get one users
-router.get("/:id", authController.protect, userController.getOneUser);
-
 //Delete User
 router.delete("/deleteMe", authController.protect, userController.deleteUser);
 
