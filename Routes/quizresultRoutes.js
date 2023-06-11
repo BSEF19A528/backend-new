@@ -15,5 +15,19 @@ router.post(
   quizresultController.createquizresult
 );
 
+router.patch(
+  "/updatequizresult",
+  authController.protect,
+  authController.restrictTo("student"),
+  quizresultController.updatequizresult
+);
+
+router.get(
+  "/getquizresult/:id",
+  authController.protect,
+  authController.restrictTo("student"),
+  quizresultController.getquizresult
+);
+
 //exporting
 module.exports = router;

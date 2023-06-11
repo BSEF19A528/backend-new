@@ -59,27 +59,27 @@ exports.viewEnrolledCourses = catchAsync(async (req, res, next) => {
   });
 });
 
-//view enrolled courses
-exports.viewOneEnrolledCourse = catchAsync(async (req, res, next) => {
-  const courseId = req.params.id;
-  //finding user
+// //view enrolled courses
+// exports.viewOneEnrolledCourse = catchAsync(async (req, res, next) => {
+//   const courseId = req.params.id;
+//   //finding user
 
-  const data = await User.findOne({ courses: { $in: [courseId] } });
+//   const data = await User.findOne({ courses: { $in: [courseId] } });
 
-  if (data === null) {
-    return next(new AppError("student is not enrolled in this course", 404));
-  }
-  const newCourse = await Course.findById(courseId);
+//   if (data === null) {
+//     return next(new AppError("student is not enrolled in this course", 404));
+//   }
+//   const newCourse = await Course.findById(courseId);
 
-  //error handling code
-  if (!newCourse) {
-    return next(new AppError("No Course found with that ID", 404));
-  }
+//   //error handling code
+//   if (!newCourse) {
+//     return next(new AppError("No Course found with that ID", 404));
+//   }
 
-  //response
-  res.status(200).json({
-    //JSEND FORMAT
-    status: "success",
-    data: newCourse,
-  });
-});
+//   //response
+//   res.status(200).json({
+//     //JSEND FORMAT
+//     status: "success",
+//     data: newCourse,
+//   });
+// });

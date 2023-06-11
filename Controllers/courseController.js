@@ -3,6 +3,7 @@ const AppError = require("../utils/appError");
 const Course = require("../models/courseModel");
 const multer = require("multer");
 const sharp = require("sharp");
+const Quizresult = require("../models/quizresultModel");
 
 //keeping image in memory buffer
 const multerStorage = multer.memoryStorage();
@@ -149,7 +150,6 @@ exports.viewOneCourse = catchAsync(async (req, res, next) => {
   if (!newCourse) {
     return next(new AppError("No Course found with that ID", 404));
   }
-
   //response
   res.status(200).json({
     //JSEND FORMAT

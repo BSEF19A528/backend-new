@@ -2,14 +2,16 @@ const mongoose = require("mongoose");
 
 const quizresultSchema = new mongoose.Schema({
   courseId: {
+    // String,
     type: mongoose.SchemaTypes.ObjectId,
     ref: "Course",
   },
   studentId: {
+    // String,
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
   },
-  quizresult: [{ sectionid: mongoose.SchemaTypes.ObjectId, result: String }],
+  quizresult: { sectionid: Number, result: String },
 });
 
 //model
