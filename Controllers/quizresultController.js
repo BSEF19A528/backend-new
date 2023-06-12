@@ -18,26 +18,26 @@ exports.createquizresult = catchAsync(async (req, res, next) => {
 exports.updatequizresult = catchAsync(async (req, res, next) => {
   const studentID = req.body.studentId;
   const courseID = req.body.courseId;
-  const sectionID = req.body.quizresult.sectionid;
-  const result = req.body.quizresult.result;
+  const sectionID = req.body.sectionid;
+  const results = req.body.result;
 
   console.log(sectionID);
-  console.log(result);
+  console.log(results);
 
   const filter = {
     studentId: studentID,
     courseId: courseID,
-    "quizresult.sectionid": sectionID,
+    sectionid: sectionID,
   };
   const update = {
     $set: {
-      "quizresult.result": result,
+      result: results,
     },
   };
 
   const document = await Quizresult.updateOne(filter, update);
 
-  console.log(document);
+  //console.log(document);
 
   res.status(200).json({
     status: "success",
@@ -45,21 +45,24 @@ exports.updatequizresult = catchAsync(async (req, res, next) => {
   });
 });
 
-//update quiz result
+//get quiz result
 exports.getquizresult = catchAsync(async (req, res, next) => {
-  const studentID = req.user.id;
-  const courseID = req.params.id;
+  const projectionFields = {
+    __v: 0,
+    _id: 0,
+  };
 
   const document = await Quizresult.find(
-    { courseId: courseID } && { studentId: studentID }
+    {
+      courseId: req.params.id,
+      studentId: req.user.id,
+    },
+    projectionFields
   );
-
   console.log(document);
 
   res.status(200).json({
     status: "success",
     document,
   });
-
-  //}
 });

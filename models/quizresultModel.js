@@ -2,16 +2,24 @@ const mongoose = require("mongoose");
 
 const quizresultSchema = new mongoose.Schema({
   courseId: {
-    // String,
     type: mongoose.SchemaTypes.ObjectId,
     ref: "Course",
   },
+
   studentId: {
-    // String,
     type: mongoose.SchemaTypes.ObjectId,
     ref: "User",
   },
-  quizresult: { sectionid: Number, result: String },
+  sectionid: Number,
+  result: String,
+});
+
+quizresultSchema.post("find", function (docs) {
+  // Exclude specific fields from each document
+  docs.forEach((doc) => {
+    doc.courseId = undefined;
+    doc.studentId = undefined;
+  });
 });
 
 //model

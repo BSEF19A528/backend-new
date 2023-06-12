@@ -21,6 +21,7 @@ const userRouter = require("./Routes/userRoutes");
 const courseRouter = require("./Routes/courseRoutes");
 const enrollRouter = require("./Routes/enrollRoutes");
 const quizresultRouter = require("./Routes/quizresultRoutes");
+const reviewRouter = require("./Routes/reviewRoutes");
 
 //GLOBAL MIDDLEWARES
 
@@ -43,6 +44,7 @@ app.use("/api/v1/users", userRouter); //middleware
 app.use("/api/v1/courses", courseRouter);
 app.use("/api/v1/enroll", enrollRouter);
 app.use("/api/v1/quizresult", quizresultRouter);
+app.use("/api/v1/reviews", reviewRouter); //middleware
 
 //Defining handler for the routes that are not cached by our routes.
 app.all("*", (req, res, next) => {
