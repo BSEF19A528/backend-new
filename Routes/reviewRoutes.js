@@ -25,11 +25,11 @@ router.get(
 );
 
 //deleting a review
-router.delete(
-  "/deleteReview/:id",
-  authController.restrictTo("student"),
-  reviewController.deleteReview
-);
+// router.delete(
+//   "/deleteReview/:id",
+//   authController.restrictTo("student"),
+//   reviewController.deleteReview
+// );
 
 //exporting
 module.exports = router;

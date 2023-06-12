@@ -34,17 +34,17 @@ exports.getAllReviews = catchAsync(async (req, res, next) => {
   });
 });
 
-//Delete Review
-exports.deleteReview = catchAsync(async (req, res, next) => {
-  const results = await Review.findByIdAndDelete(req.params.id);
+// //Delete Review
+// exports.deleteReview = catchAsync(async (req, res, next) => {
+//   const results = await Review.findByIdAndDelete(req.params.id);
 
-  if (!results) {
-    return next(new AppError("No review found with that ID", 404));
-  }
+//   if (!results) {
+//     return next(new AppError("No review found with that ID", 404));
+//   }
 
-  res.status(200).json({
-    status: "success",
-    message: "Review deleted successfully",
-    data: null,
-  });
-});
+//   res.status(200).json({
+//     status: "success",
+//     message: "Review deleted successfully",
+//     data: null,
+//   });
+// });
