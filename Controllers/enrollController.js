@@ -29,9 +29,9 @@ exports.enrollStudentinCourse = catchAsync(async (req, res, next) => {
   }
 
   // Update the students array of the course
-  course.students.push(studentId);
+  //course.students.push(studentId);
   // Save the updated course object
-  await course.save({ validateBeforeSave: false });
+  //await course.save({ validateBeforeSave: false });
 
   //sending response
   res.status(200).json({
