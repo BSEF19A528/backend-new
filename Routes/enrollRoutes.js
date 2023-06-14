@@ -23,13 +23,5 @@ router.get(
   enrollController.viewEnrolledCourses
 );
 
-//to view one enrolled courses
-// router.get(
-//   "/viewOneEnrolledCourse/:id",
-//   authController.protect,
-//   authController.restrictTo("student"),
-//   enrollController.viewOneEnrolledCourse
-// );
-
 //exporting
 module.exports = router;
