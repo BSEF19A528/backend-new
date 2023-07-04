@@ -30,21 +30,21 @@ const statsRouter = require("./Routes/statsRoutes");
 //GLOBAL MIDDLEWARES
 
 //set seurity http header
-app.use(helmet());
+// app.use(helmet());
 
 //Apllying rate limiting
-const Limiter = rateLimit({
-  max: 100,
-  windowMs: 60 * 60 * 1000,
-  message: "Too many requests from this IP. Please try again in an hour.",
-});
-app.use("/api", Limiter);
+// const Limiter = rateLimit({
+//   max: 100,
+//   windowMs: 60 * 60 * 1000,
+//   message: "Too many requests from this IP. Please try again in an hour.",
+// });
+// app.use("/api", Limiter);
 
 //Data sanitization against NOSQL query injection.
-app.use(mongoSanitize());
+// app.use(mongoSanitize());
 
 //Data sanitization against XSS attacks
-app.use(xss());
+// app.use(xss());
 
 //Body parser -- reading data from body into req.body
 app.use(express.json({ limit: "50mb" }));

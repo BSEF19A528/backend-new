@@ -141,7 +141,7 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   //checking if email verified or not.
-  if (user.verified == false) {
+  if (user.verified === false) {
     //generate the random verify token
     const verifyToken = user.createEmailVerifyToken();
 

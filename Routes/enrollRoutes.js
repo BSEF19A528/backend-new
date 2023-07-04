@@ -23,5 +23,12 @@ router.get(
   enrollController.viewEnrolledCourses
 );
 
+router.patch(
+  "/unenrollCourse",
+  authController.protect,
+  authController.restrictTo("student"),
+  enrollController.unenrollCourses
+);
+
 //exporting
 module.exports = router;
