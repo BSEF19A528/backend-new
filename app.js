@@ -2,6 +2,10 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const rateLimit = require("express-rate-limit");
+const mongoSanitize = require("express-mongo-sanitize");
+const xss = require("xss-clean");
+const helmet = require("helmet");
 
 const app = express(); //created app variable and assigning the result of calling express
 
@@ -24,6 +28,23 @@ const quizresultRouter = require("./Routes/quizresultRoutes");
 const statsRouter = require("./Routes/statsRoutes");
 
 //GLOBAL MIDDLEWARES
+
+//set seurity http header
+app.use(helmet());
+
+//Apllying rate limiting
+const Limiter = rateLimit({
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: "Too many requests from this IP. Please try again in an hour.",
+});
+app.use("/api", Limiter);
+
+//Data sanitization against NOSQL query injection.
+app.use(mongoSanitize());
+
+//Data sanitization against XSS attacks
+app.use(xss());
 
 //Body parser -- reading data from body into req.body
 app.use(express.json({ limit: "50mb" }));
