@@ -8,16 +8,9 @@
     "start:prod": "set NODE_ENV=production&&nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iamhuraira/FYP__DevLearn__An_eLearning_Platform.git"
-  },
+
   "author": "Ahmar",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/iamhuraira/FYP__DevLearn__An_eLearning_Platform/issues"
-  },
-  "homepage": "https://github.com/iamhuraira/FYP__DevLearn__An_eLearning_Platform#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
